@@ -182,33 +182,6 @@
   left: -4px;
 }
 
-/* --- RESPONSIVENESS (Mobile Portrait) --- */
-@media screen and (max-width: 850px) {
-  .landing-content {
-    padding: 2rem;
-    width: 95vw;
-  }
-
-  .landing-header {
-    flex-direction: column;
-    gap: 15px;
-    text-align: center;
-  }
-
-  .landing-body {
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .landing-left-col, .landing-right-col {
-    flex: 1;
-  }
-
-  .start-button {
-    font-size: 1.5rem;
-    padding: 20px;
-  }
-}
 
 /* --- RESPONSIVENESS (Mobile Landscape) --- */
 /* Reuse the flex-row logic but tighten gaps */
