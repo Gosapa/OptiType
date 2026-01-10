@@ -7,6 +7,8 @@
   align-items: center;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   font-family: 'Segoe UI', sans-serif;
+  overflow-y: auto;
+  padding: 20px 0;
 }
 
 /* src/LandingPage.css */
@@ -25,7 +27,6 @@
   /* Ensure it fits on mobile screens just in case */
   max-width: 90vw;
 
-  /* FIX 2: Lock the total height (optional, but good for stability) */
   min-height: 600px;
   display: flex;
   flex-direction: column;
@@ -67,8 +68,6 @@
   justify-content: center;
 }
 
-/* ... (Rest of CSS remains the same) ... */
-/* Ensure the header is specifically dark */
 .landing-instructions h3 {
   color: #2c3e50;
   margin-top: 0;
@@ -166,4 +165,18 @@
   padding: 4px 10px;
   border-radius: 12px;
   font-weight: bold;
+}
+@media screen and (max-height: 500px) {
+  .landing-container {
+    align-items: flex-start; /* Start from top so we can scroll down */
+  }
+
+  .landing-content {
+    min-height: auto; /* Let content determine height */
+    padding: 1.5rem; /* Less padding to save space */
+    margin: 20px 0;
+  }
+
+  .landing-title { font-size: 2.5rem; } /* Smaller Title */
+  .landing-instructions { min-height: auto; } /* Remove empty space reservation */
 }

@@ -8,12 +8,8 @@ import { calculateGaze } from './mathUtils';
 const GazeTracker = ({ onGazeUpdate }) => {
   const webcamRef = useRef(null);
 
-  // PERFORMANCE FIX 1: Track the last time we processed a frame
   const lastProcessTime = useRef(0);
 
-  // CONFIG: How many milliseconds to wait between checks?
-  // 100ms = 10 FPS (Very smooth for UI, low CPU)
-  // 200ms = 5 FPS (Maximum performance, slightly choppier cursor)
   const THROTTLE_MS = 150;
 
   useEffect(() => {
