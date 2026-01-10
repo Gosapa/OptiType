@@ -8,7 +8,7 @@ const LandingPage = ({ language, setLanguage }) => {
   // Content Dictionary
   const TEXT = {
     KO: {
-      title: "EyeType",
+      title: "OptiType",
       subtitle: "모두를 위한 시선 제어 키보드",
       instructions_title: "사용 방법:",
       step1: "👀 시선을 왼쪽/오른쪽으로 움직여 파란색 커서를 이동하세요.",
@@ -18,7 +18,7 @@ const LandingPage = ({ language, setLanguage }) => {
       note: "* 카메라는 로컬에서만 처리되며 서버로 전송되지 않습니다."
     },
     EN: {
-      title: "EyeType",
+      title: "OptiType",
       subtitle: "Gaze Controlled Keyboard for Everyone",
       instructions_title: "How to use:",
       step1: "👀 Look Left/Right to move the blue cursor.",
