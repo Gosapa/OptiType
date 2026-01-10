@@ -20,43 +20,52 @@
 
 .keyboard-row {
   display: flex;
-  gap: 20px;
   justify-content: center;
-  width: 95%; /* Use more width */
-  flex-wrap: wrap;
+  width: 98%; /* Use almost full width */
+
+  /* FIX 1: Stop the wrapping */
+  flex-wrap: nowrap;
+
+  /* FIX 2: Dynamic Gap.
+     On big screens = 20px gap.
+     On small screens = 5px gap. */
+  gap: clamp(5px, 2vw, 20px);
 }
 
 .key-box {
-  flex: 1;
-  min-width: 150px; /* Prevent becoming too skinny */
-  max-width: 280px;
+  flex: 1; /* Grow to fill space */
+
+  /* FIX 3: Allow shrinking */
+  /* Previously 'min-width: 150px' forced the wrap. */
+  /* 'min-width: 0' allows flexbox to shrink items indefinitely to fit */
+  min-width: 0;
+
+  max-width: 300px;
   height: 220px;
 
   background-color: #f8f9fa;
   border: 2px solid #e9ecef;
-  border-radius: 20px;
+  border-radius: 15px; /* Slightly smaller radius for tighter spaces */
 
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 
-  /* --- TYPOGRAPHY FIX --- */
-  /* clamp(MIN, PREFERRED, MAX) */
-  /* This scales the text based on viewport width (vw) */
-  font-size: clamp(1.5rem, 3vw, 3.5rem);
+  /* Typography Scale */
+  font-size: clamp(1.5rem, 4vw, 3.5rem);
   font-weight: 600;
   color: #495057;
 
-  padding: 10px; /* Padding ensures text doesn't touch edges */
-  word-break: keep-all; /* Prevents breaking Hangul words weirdly */
-  line-height: 1.2; /* Tighter lines for multi-line text */
+  padding: 5px; /* Reduced padding */
+  word-break: keep-all;
+  line-height: 1.2;
 
   transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
   box-shadow: 0 5px 0 #dee2e6;
 }
 
-/* Active State */
+/* ... Active and Back button styles remain the same ... */
 .key-box.active {
   background-color: #3498db;
   color: white;
@@ -65,16 +74,11 @@
   border-color: #3498db;
 }
 
-/* --- BACK BUTTON STYLING --- */
 .key-box.key-back {
-  background-color: #ffeaa7; /* Light Yellow to distinguish */
+  background-color: #ffeaa7;
   border-color: #fdcb6e;
   color: #d35400;
-  max-width: 200px; /* Make it slightly smaller/compact if you want */
-}
-
-.key-box.key-back.active {
-  background-color: #e67e22;
-  color: white;
-  border-color: #d35400;
+  /* Remove max-width restriction on back button so it scales with others */
+  max-width: none;
+  flex: 0.8; /* Make back button slightly narrower than the rest if desired */
 }
