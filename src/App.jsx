@@ -1,18 +1,20 @@
 // src/App.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import GazeKeyboard from './GazeKeyboard'; // Import your renamed keyboard file
 
 function App() {
+  const [language, setLanguage] = useState('KO');
   return (
     <Router>
       <Routes>
-        {/* Show Landing Page by default */}
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/"
+               element={<LandingPage language={language} setLanguage={setLanguage}/>} />
 
         {/* Show Keyboard when URL is /keyboard */}
-        <Route path="/keyboard" element={<GazeKeyboard />} />
+        <Route path="/keyboard"
+               element={<GazeKeyboard language={language}/>} />
       </Routes>
     </Router>
   );

@@ -79,3 +79,66 @@
   font-size: 0.8rem;
   color: #aaa;
 }
+
+.language-toggle-container {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.toggle-switch {
+  display: flex;
+  background: #e0e0e0;
+  border-radius: 30px;
+  padding: 4px;
+  position: relative;
+  cursor: pointer;
+  width: 200px;
+}
+
+.toggle-option {
+  flex: 1;
+  text-align: center;
+  padding: 8px 0;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  z-index: 2;
+  transition: color 0.3s;
+  color: #888;
+}
+
+.toggle-option.selected {
+  color: #333;
+}
+
+/* The sliding bubble */
+.toggle-slider {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 50%; /* half width */
+  bottom: 4px;
+  background: white;
+  border-radius: 25px;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 1;
+}
+
+/* Move slider right if English is selected */
+.toggle-switch[data-lang="EN"] .toggle-slider {
+  transform: translateX(100%); /* Move 100% of its own width */
+  left: -4px; /* Adjustment for padding */
+}
+
+.beta-badge {
+  font-size: 0.75rem;
+  background-color: #ffeaa7;
+  color: #d35400;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: bold;
+}
