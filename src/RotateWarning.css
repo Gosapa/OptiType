@@ -5,21 +5,30 @@
 
 /* LOGIC: Show ONLY if device is in Portrait AND screen is mobile-sized */
 @media screen and (orientation: portrait) and (max-width: 900px) {
-  .rotate-warning-container {
+    .rotate-warning-container {
+    /* Ensure it locks to the viewport corner */
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
+
     width: 100vw;
     height: 100vh;
-    z-index: 9999; /* Sit on top of everything */
-    background-color: #2c3e50;
-    color: white;
+    z-index: 9999;
+
+    /* Centering Logic */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    background-color: #2c3e50;
+    color: white;
     text-align: center;
     padding: 20px;
+    margin: 0; /* Reset margins */
+    box-sizing: border-box; /* Ensure padding doesn't overflow width */
   }
 
   .phone-icon {

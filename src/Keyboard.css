@@ -82,3 +82,29 @@
   max-width: none;
   flex: 0.8; /* Make back button slightly narrower than the rest if desired */
 }
+
+@media screen and (max-height: 500px) {
+  .keyboard-header {
+    display: none; /* Hide "Current Selection" title to save massive space */
+  }
+
+  .keyboard-row {
+    gap: 8px; /* Tighter gap */
+    width: 100%;
+  }
+
+  .key-box {
+    /* DRASTICALLY reduce height */
+    height: 60vh; /* Use viewport units: 60% of screen height */
+    max-height: 180px;
+
+    font-size: 2rem; /* Smaller font */
+    border-radius: 10px;
+    border-width: 1px;
+    box-shadow: 0 3px 0 #dee2e6; /* Smaller shadow */
+  }
+
+  .key-box.active {
+    transform: translateY(3px); /* Smaller press animation */
+  }
+}

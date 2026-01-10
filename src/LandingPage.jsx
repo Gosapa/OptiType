@@ -34,41 +34,53 @@ const LandingPage = ({ language, setLanguage }) => {
   return (
     <div className="landing-container">
       <div className="landing-content">
-        <h1 className="landing-title">{content.title}</h1>
-        <p className="landing-subtitle">{content.subtitle}</p>
+        {/* --- ROW 1: HEADER (Title + Toggle) --- */}
+        <div className="landing-header">
+          <h1 className="landing-title">{content.title}</h1>
 
-        {/* --- LANGUAGE TOGGLE --- */}
-        <div className="language-toggle-container">
-          <div
-            className="toggle-switch"
-            data-lang={language}
-            onClick={() => setLanguage(prev => prev === 'KO' ? 'EN' : 'KO')}
-          >
-            <div className={`toggle-option ${language === 'KO' ? 'selected' : ''}`}>한국어</div>
-            <div className={`toggle-option ${language === 'EN' ? 'selected' : ''}`}>English</div>
-            <div className="toggle-slider"></div>
+          <div className="language-toggle-container">
+            <div
+              className="toggle-switch"
+              data-lang={language}
+              onClick={() => setLanguage(prev => prev === 'KO' ? 'EN' : 'KO')}
+            >
+              <div className={`toggle-option ${language === 'KO' ? 'selected' : ''}`}>한국어</div>
+              <div className={`toggle-option ${language === 'EN' ? 'selected' : ''}`}>English</div>
+              <div className="toggle-slider"></div>
+            </div>
           </div>
         </div>
 
-        <div className="landing-instructions">
-          <h3>{content.instructions_title}</h3>
-          <ul>
-            <li>{content.step1}</li>
-            <li>{content.step2}</li>
-            <li>{content.step3}</li>
-          </ul>
+        {/* --- ROW 2: SPLIT COLUMNS --- */}
+        <div className="landing-body">
+
+          {/* COLUMN 1: Description */}
+          <div className="landing-left-col">
+            <p className="landing-subtitle">{content.subtitle}</p>
+            <div className="landing-instructions">
+              <h3>{content.instructions_title}</h3>
+              <ul>
+                <li>{content.step1}</li>
+                <li>{content.step2}</li>
+                <li>{content.step3}</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* COLUMN 2: Big Button */}
+          <div className="landing-right-col">
+            <button
+              className="start-button"
+              onClick={() => navigate('/keyboard')}
+            >
+              {content.button}
+            </button>
+            <p className="privacy-note">
+              {content.note}
+            </p>
+          </div>
+
         </div>
-
-        <button
-          className="start-button"
-          onClick={() => navigate('/keyboard')}
-        >
-          {content.button}
-        </button>
-
-        <p className="privacy-note">
-          {content.note}
-        </p>
       </div>
     </div>
   );

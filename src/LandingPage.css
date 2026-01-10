@@ -1,4 +1,5 @@
 /* src/LandingPage.css */
+
 .landing-container {
   height: 100vh;
   width: 100vw;
@@ -7,111 +8,140 @@
   align-items: center;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   font-family: 'Segoe UI', sans-serif;
-  overflow-y: auto;
-  padding: 20px 0;
+  overflow-y: auto; /* Safety scroll */
+  padding: 20px;
+  box-sizing: border-box;
 }
-
-/* src/LandingPage.css */
-
-/* ... (background styles remain the same) ... */
 
 .landing-content {
   background: white;
   padding: 3rem;
   border-radius: 20px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-  text-align: center;
 
-  /* FIX 1: Lock the width */
-  width: 500px;
-  /* Ensure it fits on mobile screens just in case */
-  max-width: 90vw;
+  /* Increased width for 2-column layout */
+  width: 900px;
+  max-width: 100%;
 
-  min-height: 600px;
+  /* Use auto height so it grows with content */
+  min-height: auto;
+
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Distribute space evenly */
+  gap: 2rem; /* Gap between Header and Body */
+}
+
+/* --- 1. HEADER ROW Styles --- */
+.landing-header {
+  display: flex;
+  justify-content: space-between; /* Push Title left, Toggle right */
+  align-items: center;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 1rem;
 }
 
 .landing-title {
-  font-size: 4rem;
+  font-size: 3.5rem;
   margin: 0;
   color: #2c3e50;
   letter-spacing: -2px;
+  line-height: 1;
 }
 
-.landing-subtitle {
-  font-size: 1.2rem;
-  color: #7f8c8d;
-  margin-bottom: 1.5rem;
+/* Remove old margins from toggle since flex handles it */
+.language-toggle-container {
+  margin: 0;
+}
 
-  /* FIX 3: Reserve space for subtitle (prevents jump if one lang is 2 lines) */
-  min-height: 3rem;
+/* --- 2. BODY ROW Styles --- */
+.landing-body {
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  gap: 3rem; /* Space between Left and Right columns */
+}
+
+/* Left Column: Instructions */
+.landing-left-col {
+  flex: 1.2; /* Take slightly more space */
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+}
+
+/* Right Column: Button */
+.landing-right-col {
+  flex: 0.8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- ELEMENT STYLES --- */
+
+.landing-subtitle {
+  font-size: 1.3rem;
+  color: #7f8c8d;
+  margin: 0 0 1.5rem 0;
+  text-align: left;
+  font-weight: 500;
 }
 
 .landing-instructions {
   text-align: left;
   background: #f8f9fa;
   padding: 1.5rem;
-  border-radius: 10px;
-  margin-bottom: 2rem;
+  border-radius: 15px;
   border-left: 5px solid #3498db;
   color: #333;
-
-  /* FIX 4: Reserve vertical space for the longest language (English) */
-  min-height: 180px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .landing-instructions h3 {
   color: #2c3e50;
   margin-top: 0;
+  margin-bottom: 10px;
 }
 
-/* Ensure list items are dark */
+.landing-instructions ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
 .landing-instructions li {
-  margin-bottom: 10px;
-  font-size: 1.1rem;
-  color: #444444;
+  margin-bottom: 8px;
+  font-size: 1.05rem;
+  color: #444;
 }
 
 .start-button {
   background-color: #3498db;
   color: white;
   border: none;
-  padding: 15px 40px;
-  font-size: 1.5rem;
-  border-radius: 50px;
+  width: 100%; /* Fill the column */
+  padding: 30px; /* Big click area */
+  font-size: 2rem; /* Big text */
+  border-radius: 20px;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  font-weight: bold;
+  transition: all 0.2s ease;
+  font-weight: 800;
+  box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
 }
 
 .start-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(52, 152, 219, 0.4);
   background-color: #2980b9;
 }
 
 .privacy-note {
-  margin-top: 2rem;
-  font-size: 0.8rem;
-  color: #aaa;
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: #95a5a6;
+  text-align: center;
+  line-height: 1.4;
 }
 
-.language-toggle-container {
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
+/* Toggle Switch Styles */
 .toggle-switch {
   display: flex;
   background: #e0e0e0;
@@ -119,7 +149,7 @@
   padding: 4px;
   position: relative;
   cursor: pointer;
-  width: 200px;
+  width: 180px;
 }
 
 .toggle-option {
@@ -134,17 +164,12 @@
   color: #888;
 }
 
-.toggle-option.selected {
-  color: #333;
-}
+.toggle-option.selected { color: #333; }
 
-/* The sliding bubble */
 .toggle-slider {
   position: absolute;
-  top: 4px;
-  left: 4px;
-  width: 50%; /* half width */
-  bottom: 4px;
+  top: 4px; left: 4px; bottom: 4px;
+  width: 50%;
   background: white;
   border-radius: 25px;
   transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -152,31 +177,48 @@
   z-index: 1;
 }
 
-/* Move slider right if English is selected */
 .toggle-switch[data-lang="EN"] .toggle-slider {
-  transform: translateX(100%); /* Move 100% of its own width */
-  left: -4px; /* Adjustment for padding */
+  transform: translateX(100%);
+  left: -4px;
 }
 
-.beta-badge {
-  font-size: 0.75rem;
-  background-color: #ffeaa7;
-  color: #d35400;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-weight: bold;
-}
-@media screen and (max-height: 500px) {
-  .landing-container {
-    align-items: flex-start; /* Start from top so we can scroll down */
-  }
-
+/* --- RESPONSIVENESS (Mobile Portrait) --- */
+@media screen and (max-width: 850px) {
   .landing-content {
-    min-height: auto; /* Let content determine height */
-    padding: 1.5rem; /* Less padding to save space */
-    margin: 20px 0;
+    padding: 2rem;
+    width: 95vw;
   }
 
-  .landing-title { font-size: 2.5rem; } /* Smaller Title */
-  .landing-instructions { min-height: auto; } /* Remove empty space reservation */
+  .landing-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .landing-body {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .landing-left-col, .landing-right-col {
+    flex: 1;
+  }
+
+  .start-button {
+    font-size: 1.5rem;
+    padding: 20px;
+  }
+}
+
+/* --- RESPONSIVENESS (Mobile Landscape) --- */
+/* Reuse the flex-row logic but tighten gaps */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  .landing-container { padding: 10px; }
+  .landing-content { padding: 3.5rem; width: 75vw; gap: 1rem; }
+
+  .landing-title { font-size: 2rem; }
+  .toggle-switch { width: 140px; }
+  .landing-instructions { display: none; } /* Hide instructions on tiny screens? OR make smaller */
+
+  .start-button { padding: 15px; font-size: 1.2rem; }
 }
