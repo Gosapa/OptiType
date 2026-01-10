@@ -16,6 +16,7 @@
     "hangul-js": "^0.2.6",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-router-dom": "^7.12.0",
     "react-webcam": "^7.2.0"
   },
   "devDependencies": {
