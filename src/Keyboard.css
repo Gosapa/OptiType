@@ -1,0 +1,80 @@
+/* src/Keyboard.css */
+
+.keyboard-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.keyboard-header {
+  font-size: 2rem;
+  color: #888;
+  margin-bottom: 20px;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.keyboard-row {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  width: 95%; /* Use more width */
+  flex-wrap: wrap;
+}
+
+.key-box {
+  flex: 1;
+  min-width: 150px; /* Prevent becoming too skinny */
+  max-width: 280px;
+  height: 220px;
+
+  background-color: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  /* --- TYPOGRAPHY FIX --- */
+  /* clamp(MIN, PREFERRED, MAX) */
+  /* This scales the text based on viewport width (vw) */
+  font-size: clamp(1.5rem, 3vw, 3.5rem);
+  font-weight: 600;
+  color: #495057;
+
+  padding: 10px; /* Padding ensures text doesn't touch edges */
+  word-break: keep-all; /* Prevents breaking Hangul words weirdly */
+  line-height: 1.2; /* Tighter lines for multi-line text */
+
+  transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 5px 0 #dee2e6;
+}
+
+/* Active State */
+.key-box.active {
+  background-color: #3498db;
+  color: white;
+  transform: translateY(8px);
+  box-shadow: none;
+  border-color: #3498db;
+}
+
+/* --- BACK BUTTON STYLING --- */
+.key-box.key-back {
+  background-color: #ffeaa7; /* Light Yellow to distinguish */
+  border-color: #fdcb6e;
+  color: #d35400;
+  max-width: 200px; /* Make it slightly smaller/compact if you want */
+}
+
+.key-box.key-back.active {
+  background-color: #e67e22;
+  color: white;
+  border-color: #d35400;
+}
