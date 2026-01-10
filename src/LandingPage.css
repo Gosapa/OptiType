@@ -9,13 +9,27 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
+/* src/LandingPage.css */
+
+/* ... (background styles remain the same) ... */
+
 .landing-content {
   background: white;
   padding: 3rem;
   border-radius: 20px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.1);
   text-align: center;
-  max-width: 500px;
+
+  /* FIX 1: Lock the width */
+  width: 500px;
+  /* Ensure it fits on mobile screens just in case */
+  max-width: 90vw;
+
+  /* FIX 2: Lock the total height (optional, but good for stability) */
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribute space evenly */
 }
 
 .landing-title {
@@ -28,7 +42,13 @@
 .landing-subtitle {
   font-size: 1.2rem;
   color: #7f8c8d;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+
+  /* FIX 3: Reserve space for subtitle (prevents jump if one lang is 2 lines) */
+  min-height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .landing-instructions {
@@ -38,11 +58,16 @@
   border-radius: 10px;
   margin-bottom: 2rem;
   border-left: 5px solid #3498db;
+  color: #333;
 
-  /* FIX: Force text color to be dark within this light box */
-  color: #333333;
+  /* FIX 4: Reserve vertical space for the longest language (English) */
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
+/* ... (Rest of CSS remains the same) ... */
 /* Ensure the header is specifically dark */
 .landing-instructions h3 {
   color: #2c3e50;

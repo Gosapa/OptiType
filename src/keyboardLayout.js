@@ -6,7 +6,7 @@ const char = (c) => ({ type: 'char', label: c, value: c });
 // Helper to create a category node
 const group = (label, children) => ({ type: 'group', label, children });
 
-export const KEYBOARD_ROOT = {
+export const KOREAN_ROOT = {
   type: 'root',
   label: 'Start',
   children: [
@@ -30,6 +30,24 @@ export const KEYBOARD_ROOT = {
       char('SPACE'),
       char('BACKSPACE'),
       char('CLEAR')
+    ])
+  ]
+};
+
+export const ENGLISH_ROOT = {
+  type: 'root',
+  label: 'Start',
+  children: [
+    group('A - M', [
+        group('A - G', [char('A'), char('B'), char('C'), char('D'), char('E'), char('F'), char('G')]),
+        group('H - M', [char('H'), char('I'), char('J'), char('K'), char('L'), char('M')])
+    ]),
+    group('N - Z', [
+        group('N - T', [char('N'), char('O'), char('P'), char('Q'), char('R'), char('S'), char('T')]),
+        group('U - Z', [char('U'), char('V'), char('W'), char('X'), char('Y'), char('Z')])
+    ]),
+    group('Commands', [
+      char('SPACE'), char('BACKSPACE'), char('CLEAR')
     ])
   ]
 };

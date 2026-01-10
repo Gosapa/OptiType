@@ -2,12 +2,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import GazeTracker from './GazeTracker';
 import Keyboard from './Keyboard';
-import { KEYBOARD_ROOT } from './keyboardLayout';
+import { KOREAN_ROOT, ENGLISH_ROOT } from './keyboardLayout';
 import './GazeKeyboard.css';
 // 1. Import the library
 import Hangul from 'hangul-js';
 
-function GazeKeyboard() {
+function GazeKeyboard({language}) {
+  const INITIAL_ROOT = language === 'KO' ? KOREAN_ROOT : ENGLISH_ROOT;
   // 2. CHANGE STATE: Store history of keys, not just the string
   const [inputHistory, setInputHistory] = useState([]);
 
@@ -16,7 +17,7 @@ function GazeKeyboard() {
   const typedText = Hangul.assemble(inputHistory);
 
   const [currentGaze, setCurrentGaze] = useState("CENTER");
-  const [currentNode, setCurrentNode] = useState(KEYBOARD_ROOT);
+  const [currentNode, setCurrentNode] = useState(INITIAL_ROOT);
   const [activeIndex, setActiveIndex] = useState(0);
 
   const isBlinkFrozen = useRef(false);
@@ -73,7 +74,7 @@ function GazeKeyboard() {
       setActiveIndex(0);
     } else {
       processInput(selectedItem.value);
-      setCurrentNode(KEYBOARD_ROOT);
+      setCurrentNode(INITIAL_ROOT);
       setActiveIndex(0);
     }
   };

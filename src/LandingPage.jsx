@@ -11,7 +11,7 @@ const LandingPage = ({ language, setLanguage }) => {
       title: "OptiType",
       subtitle: "모두를 위한 시선 제어 키보드",
       instructions_title: "사용 방법:",
-      step1: "👀 시선을 왼쪽/오른쪽으로 움직여 파란색 커서를 이동하세요.",
+      step1: "👀 시선을 움직여 파란색 커서를 이동하세요.",
       step2: "😉 눈을 깜빡여 키를 선택하세요.",
       step3: "💡 밝은 곳에서 사용해주세요.",
       button: "시작하기",
@@ -48,8 +48,6 @@ const LandingPage = ({ language, setLanguage }) => {
             <div className={`toggle-option ${language === 'EN' ? 'selected' : ''}`}>English</div>
             <div className="toggle-slider"></div>
           </div>
-          {/* Small Description as requested */}
-          {language === 'EN' && <span className="beta-badge">⚠ English Version Coming Soon</span>}
         </div>
 
         <div className="landing-instructions">
